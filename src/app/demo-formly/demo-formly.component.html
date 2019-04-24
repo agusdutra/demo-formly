@@ -1,0 +1,19 @@
+<div class="page-wrapper">
+
+  <div class="wrapper mat-typography">
+    <form [formGroup]="form" (submit)="onSubmitForm()">
+      <formly-form [model]="model" [fields]="fields" [form]="form">
+      </formly-form>
+      <div class="actions">
+        <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Guardar</button>
+      </div>
+    </form>
+
+  </div>
+
+  <div class="result">
+    <div *ngIf="this.model" class="form-result">
+      <pre>{{getPrintModel()}}</pre>
+    </div>
+  </div>
+</div>

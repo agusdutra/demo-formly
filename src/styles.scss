@@ -1,1 +1,57 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+formly-field-mat-radio {
+  .mat-radio-group {
+    display: inline-flex;
+    flex-direction: column;
+  }
+
+  .mat-radio-button {
+    margin: 5px;
+  }
+}
+
+formly-field-mat-radio {
+  .mat-radio-group {
+    display: inline-flex;
+    flex-direction: column;
+  }
+
+  .mat-radio-button {
+    margin: 5px;
+  }
+}
+
+formly-field-mat-multicheckbox {
+  display: inline-flex;
+  flex-direction: column;
+
+  .mat-checkbox {
+    margin: 5px;
+  }
+}
+
+.flex-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+.flex-2 {
+  flex: 1 1 48%;
+  margin: 0 1%;
+}
+
+.flex-1 {
+  flex: 1 1 98%;
+  margin: 0 1%;
+}

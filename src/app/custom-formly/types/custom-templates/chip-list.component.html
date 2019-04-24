@@ -1,0 +1,16 @@
+<mat-form-field class="example-chip-list">
+  <mat-label>{{field.templateOptions.label}}</mat-label>
+
+  <mat-chip-list #chipList>
+    <mat-chip *ngFor="let clave of claves" [selectable]="selectable"
+              [removable]="removable" (removed)="remove(clave)">
+      {{clave}}
+      <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+    </mat-chip>
+    <input placeholder="Item..."
+           [matChipInputFor]="chipList"
+           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+           [matChipInputAddOnBlur]="addOnBlur"
+           (matChipInputTokenEnd)="add($event)">
+  </mat-chip-list>
+</mat-form-field>
