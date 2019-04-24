@@ -14,9 +14,9 @@ export class DemoFormlyService {
     return [
       this.getFieldNombre(),
       this.getFieldApellido(),
-      this.getFieldCedula(),
-      this.getFieldEdad(),
       this.getFieldSexo(),
+      this.getFieldEdad(),
+      this.getFieldCedula(),
       this.getGroupDireccion(),
       this.getMultiCheckboxField(),
       this.getOtrasPreferencias()
@@ -44,6 +44,21 @@ export class DemoFormlyService {
   }
 
   /**
+   * Input de tipo password
+   */
+  getFieldApellido() {
+    return {
+      key: 'apellido',
+      type: 'input',
+      templateOptions: {
+        type: 'text',
+        label: 'Apellido',
+        required: true,
+      }
+    };
+  }
+
+  /**
    * Input string basico con required
    */
   getFieldSexo() {
@@ -61,43 +76,6 @@ export class DemoFormlyService {
     };
   }
 
-
-  /**
-   * Input string basico con required
-   */
-  getMultiCheckboxField() {
-    return {
-      key: 'preferencias',
-      type: 'multicheckbox',
-      templateOptions: {
-        label: 'Preferencias',
-        required: true,
-        options: [
-          {key: 'deportes', value: 'Deportes'},
-          {key: 'libros', value: 'Libros'},
-          {key: 'tecnologia', value: 'Tecnología'},
-          {key: 'otros', value: 'Otros'}]
-      }
-    };
-  }
-
-
-  /**
-   * Input de tipo password
-   */
-  getFieldApellido() {
-    return {
-      key: 'apellido',
-      type: 'input',
-      templateOptions: {
-        type: 'text',
-        label: 'Apellido',
-        required: true,
-      }
-    };
-  }
-
-
   /**
    * Edad con valor min
    */
@@ -110,6 +88,22 @@ export class DemoFormlyService {
         label: 'Edad',
         min: 18,
         required: true,
+      },
+    };
+  }
+
+
+  getFieldCedula() {
+    return {
+      key: 'cedula',
+      type: 'input',
+      templateOptions: {
+        required: true,
+        type: 'text',
+        label: 'Cédula'
+      },
+      validators: {
+        validation: ['cedula'],
       },
     };
   }
@@ -168,13 +162,34 @@ export class DemoFormlyService {
             valueProp: 'id',
           },
           hideExpression: (model) => model.pais !== 'URU',
-
+           // expressionProperties: {
+           //  'templateOptions.required': 'model.pais === "URU"',
+           //  'templateOptions.disabled': 'model.pais !== "URU"',
+           // },
         },
       ]
     };
     return group;
   }
 
+  /**
+   * Input string basico con required
+   */
+  getMultiCheckboxField() {
+    return {
+      key: 'preferencias',
+      type: 'multicheckbox',
+      templateOptions: {
+        label: 'Preferencias',
+        required: true,
+        options: [
+          {key: 'deportes', value: 'Deportes'},
+          {key: 'libros', value: 'Libros'},
+          {key: 'tecnologia', value: 'Tecnología'},
+          {key: 'otros', value: 'Otros'}]
+      }
+    };
+  }
 
   getOtrasPreferencias() {
     return {
@@ -186,21 +201,6 @@ export class DemoFormlyService {
       },
       hideExpression: (model: any, formState: any) => {
         return model.preferencias ? !model.preferencias.otros : true;
-      },
-    };
-  }
-
-  getFieldCedula() {
-    return {
-      key: 'cedula',
-      type: 'input',
-      templateOptions: {
-        required: true,
-        type: 'text',
-        label: 'Cédula'
-      },
-      validators: {
-        validation: ['cedula'],
       },
     };
   }
